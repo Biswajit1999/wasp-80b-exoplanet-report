@@ -1,0 +1,5 @@
+species,status,evidence,basis,source_label,source_url
+CH4,reported detection,6.1 sigma in transmission and emission,free atmospheric retrieval,"Bell et al. 2023, Nature",https://doi.org/10.1038/s41586-023-06687-0
+H2O,reported detection,4.6 sigma transmission; 2.6 sigma emission,free atmospheric retrieval,"Bell et al. 2023, Nature",https://doi.org/10.1038/s41586-023-06687-0
+CO / CO2 / NH3 / SO2,unconstrained,no abundance constraint,retrieval over 2.4-4.0 microns,"Bell et al. 2023, Nature",https://doi.org/10.1038/s41586-023-06687-0
+O2,no evidence,not reported,no molecular-oxygen inference,"Bell et al. 2023, Nature",https://doi.org/10.1038/s41586-023-06687-0

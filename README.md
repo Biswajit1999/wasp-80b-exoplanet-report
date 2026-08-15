@@ -1,10 +1,20 @@
-# WASP-80 b — Real TESS Transit Report
+# WASP-80 b: Methane across a Cool Giant's Atmosphere
 
+<!-- TARGET-IDENTITY-START -->
+<p align="center">
+  <img src="assets/artist_concept.webp" alt="Artist's interpretation of WASP-80 b near its host star" width="900">
+</p>
+
+<p align="center"><em>AI-generated artist's interpretation informed by the measured system properties; not a direct image.</em></p>
+
+**Warm Jupiter · methane chemistry · JWST context + TESS**
+
+A comparatively cool transiting giant where JWST detected methane in both transmission and emission, paired with a reproducible TESS transit fit and evidence audit.
+<!-- TARGET-IDENTITY-END -->
 <p align="center">
   <img src="figures/wasp80b_tess_transit.png" alt="Phase-folded real TESS transit light curve of WASP-80 b" width="760">
 </p>
 
-One real public TESS SPOC light curve; one historical NASA Exoplanet Archive ephemeris; one timing-adjusted, limb-darkened transit fit.
 
 **[Open the full report](https://biswajit1999.github.io/wasp-80b-exoplanet-report/)** — the live GitHub Pages version.
 
@@ -20,6 +30,7 @@ One real public TESS SPOC light curve; one historical NASA Exoplanet Archive eph
 pip install -r requirements.txt
 python scripts/analyze_transit.py
 python scripts/analyze_multisector.py
+python scripts/analyze_atmospheric_evidence.py
 pytest tests/ -v
 ```
 
@@ -55,6 +66,23 @@ The archive prediction was timing-adjusted independently in 1 fitted sector(s) (
 
 The per-sector table is in [`figures/multisector_statistics.csv`](figures/multisector_statistics.csv). Regenerate all three figures with `python scripts/analyze_multisector.py`.
 <!-- MULTISECTOR-UPGRADE-END -->
+
+<!-- ATMOSPHERE-EVIDENCE-START -->
+## Atmospheric evidence: detection, limit, or unknown?
+
+<p align="center"><img src="figures/molecular_evidence.png" alt="Source-graded atmospheric evidence for WASP-80 b" width="820"></p>
+
+The Nature retrieval reports methane from both transmission and emission and water at differing significance. CO, CO2, NH3, and SO2 were included but not constrained in the narrow NIRCam band. This repository records the evidence hierarchy without pretending that TESS photometry can measure composition.
+
+| Species | Status | Evidence | Basis |
+|---|---|---|---|
+| CH4 | reported detection | 6.1 sigma in transmission and emission | free atmospheric retrieval |
+| H2O | reported detection | 4.6 sigma transmission; 2.6 sigma emission | free atmospheric retrieval |
+| CO / CO2 / NH3 / SO2 | unconstrained | no abundance constraint | retrieval over 2.4-4.0 microns |
+| O2 | no evidence | not reported | no molecular-oxygen inference |
+
+Primary source: [Bell et al. 2023, Nature](https://doi.org/10.1038/s41586-023-06687-0). The table is also available as [`data/atmospheric_evidence.csv`](data/atmospheric_evidence.csv). Oxygen-bearing species such as H2O, CO2, and SO2 are **not** evidence for molecular oxygen (O2) or a biosignature.
+<!-- ATMOSPHERE-EVIDENCE-END -->
 
 ## System context
 
