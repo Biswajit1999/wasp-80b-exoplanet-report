@@ -5,13 +5,18 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11", "3.12"]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: ${{ matrix.python-version }}
           cache: pip
       - run: pip install -r requirements.txt
       - run: python scripts/analyze_transit.py
       - run: python scripts/analyze_multisector.py
+      - run: python scripts/analyze_atmospheric_evidence.py
       - run: pytest tests/ -v
