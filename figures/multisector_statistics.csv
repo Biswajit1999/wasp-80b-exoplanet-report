@@ -1,2 +1,2 @@
-sector,filename,transit_events,n_points,depth_ppm,formal_error_ppm,reduced_chi_square,beta,robust_error_ppm
-54,tess2022190063128-s0054-0000000243921117-0227-s_lc.fits,6,1717,25866.42652,79.53557712,15.904689,2.967316977,941.2131121
+sector,filename,transit_events,n_points,transit_supported,delta_bic,timing_shift_hours,depth_ppm,formal_error_ppm,scatter_scaled_error_ppm,reduced_chi_square,beta,robust_error_ppm
+54,tess2022190063128-s0054-0000000243921117-0227-s_lc.fits,6,2026,True,133598.4092,-0.008076527869,34333.45696,99.25516044,146.2984232,2.172566602,3.823333302,559.3476332
