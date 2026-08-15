@@ -13,4 +13,5 @@ jobs:
           cache: pip
       - run: pip install -r requirements.txt
       - run: python scripts/analyze_transit.py
+      - run: python scripts/analyze_multisector.py
       - run: pytest tests/ -v

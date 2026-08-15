@@ -1,0 +1,2 @@
+sector,filename,transit_events,n_points,depth_ppm,formal_error_ppm,reduced_chi_square,beta,robust_error_ppm
+54,tess2022190063128-s0054-0000000243921117-0227-s_lc.fits,6,1717,25866.42652,79.53557712,15.904689,2.967316977,941.2131121
