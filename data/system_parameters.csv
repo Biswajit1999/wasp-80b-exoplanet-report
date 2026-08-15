@@ -1,0 +1,2 @@
+pl_name,hostname,ra,dec,pl_orbper,pl_tranmid,pl_trandur,pl_rade,pl_bmasse,pl_eqt,pl_orbsmax,sy_dist,sy_tmag,st_teff,st_rad,st_mass,disc_year,discoverymethod,disc_refname,disc_pubdate,disc_facility
+WASP-80 b,WASP-80,303.1667996,-2.1444369,3.06785234,2456487.425006,2.131,11.197791,170.99254,825.0,0.0344,49.7876,10.3622,4143.0,0.586,0.577,2012,Transit,<a refstr=TRIAUD_ET_AL__2013 href=https://ui.adsabs.harvard.edu/abs/2013A%26A...551A..80T/abstract target=ref> Triaud et al. 2013 </a>,2013-03,SuperWASP
