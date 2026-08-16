@@ -29,6 +29,7 @@ A comparatively cool transiting giant where JWST detected methane in both transm
 
 - **System parameters** — the saved `pscomppars` row from the [NASA Exoplanet Archive TAP service](https://exoplanetarchive.ipac.caltech.edu/TAP/sync?query=select+pl_name%2Chostname%2Cra%2Cdec%2Cpl_orbper%2Cpl_tranmid%2Cpl_trandur%2Cpl_rade%2Cpl_bmasse%2Cpl_eqt%2Cpl_orbsmax%2Csy_dist%2Csy_tmag%2Cst_teff%2Cst_rad%2Cst_mass%2Cdisc_year%2Cdiscoverymethod%2Cdisc_refname%2Cdisc_pubdate%2Cdisc_facility+from+pscomppars+where+pl_name%3D%27WASP-80+b%27&format=csv).
 - **Observed photometry** — unmodified MAST file `tess2022190063128-s0054-0000000243921117-0227-s_lc.fits`, TESS Sector 54, DOI [10.17909/t9-nmc8-f686](https://doi.org/10.17909/t9-nmc8-f686). This is a real SPOC reduced light curve, not simulated data.
+- **Observed spectra** — Bell et al. (2023) JWST/NIRCam transmission and emission source data plus the supplied full, no-CH4, and no-H2O model contours, DOI [10.1038/s41586-023-06687-0](https://doi.org/10.1038/s41586-023-06687-0). The committed derivative is deterministically rebinned from the journal workbook, not simulated.
 - Exact URLs, IDs, retrieval date, and SHA-256 checksum are in [`data/SOURCE.md`](data/SOURCE.md).
 
 ## Reproduce the analysis
@@ -38,6 +39,7 @@ pip install -r requirements.txt
 python scripts/analyze_transit.py
 python scripts/analyze_multisector.py
 python scripts/analyze_atmospheric_evidence.py
+python scripts/analyze_methane_consistency.py
 pytest tests/ -v
 ```
 
@@ -91,6 +93,41 @@ The Nature retrieval reports methane from both transmission and emission and wat
 Primary source: [Bell et al. 2023, Nature](https://doi.org/10.1038/s41586-023-06687-0). The table is also available as [`data/atmospheric_evidence.csv`](data/atmospheric_evidence.csv). Oxygen-bearing species such as H2O, CO2, and SO2 are **not** evidence for molecular oxygen (O2) or a biosignature.
 <!-- ATMOSPHERE-EVIDENCE-END -->
 
+<!-- METHANE-CONSISTENCY-START -->
+## Independent methane morphology stress test
+
+<p align="center"><img src="figures/wasp80b_methane_consistency.png" alt="WASP-80 b transmission and emission methane model stress tests" width="900"></p>
+
+The journal source data make a stronger, reproducible question possible: does
+the preference for the supplied full model over its no-CH4 counterpart depend
+on one channel or one viewing geometry? After fitting one additive offset to
+each supplied model midpoint, the no-CH4-minus-full shape diagnostic is **84.36
+in transmission** and **240.65 in emission**. It remains 64.60 and 202.50,
+respectively, in the worst leave-one-rebinned-channel-out trials, and remains
+77.35 and 219.96 after an additional factor-of-four binning.
+
+These delta-chi-square values are intentionally **not converted to detection
+sigma**: the public curves are posterior contours, not nested maximum-likelihood
+fits, and this repository does not rerun the atmospheric retrieval. The paper's
+reported 6.1-sigma CH4 detections remain the authoritative detection statement.
+The new calculation instead shows that the characteristic spectral morphology
+is distributed across wavelength and independently present in both transit and
+eclipse geometry.
+
+The published methane abundances, log10(CH4) = -4.2 (+0.5/-0.7) in transmission
+and -3.9 (+0.6/-0.7) in emission, differ by only **0.34 sigma** under a simple
+symmetrized independent-error comparison. Using the saved composite planet and
+star values gives g = **13.39 m/s2**, an illustrative H = **223 km** for an
+H2/He atmosphere at 825 K (mean molecular weight 2.3), and about **191 ppm per
+scale height**. The full-minus-no-CH4 transmission morphology spans about **193
+ppm** within 3.05-3.65 microns: roughly one scale height, but not a retrieved
+altitude or abundance.
+
+Machine-readable outputs are in
+[`figures/methane_consistency_statistics.csv`](figures/methane_consistency_statistics.csv)
+and [`figures/methane_bin_contributions.csv`](figures/methane_bin_contributions.csv).
+<!-- METHANE-CONSISTENCY-END -->
+
 ## System context
 
 - Radius: 11.20 Earth radii
@@ -118,6 +155,7 @@ index.html
 requirements.txt
 data/                       unmodified TESS FITS + NASA row + SOURCE.md
 scripts/analyze_transit.py  timing-adjusted limb-darkened transit fit
+scripts/analyze_methane_consistency.py  source-data spectral robustness diagnostics
 figures/                    generated plot + summary_statistics.csv
 tests/                      real-data regression tests
 .github/workflows/tests.yml CI on every push and pull request
@@ -130,6 +168,7 @@ LICENSE                     MIT
 2. Ricker, G. R. et al. (2015), *Transiting Exoplanet Survey Satellite (TESS)*, JATIS 1, 014003, [doi:10.1117/1.JATIS.1.1.014003](https://doi.org/10.1117/1.JATIS.1.1.014003).
 3. TESS Team, *TESS Light Curves — All Sectors*, MAST, [doi:10.17909/t9-nmc8-f686](https://doi.org/10.17909/t9-nmc8-f686); Sector 54 used here.
 4. [NASA Exoplanet Archive](https://exoplanetarchive.ipac.caltech.edu/), `pscomppars` TAP row retrieved 2026-08-15.
+5. Bell, T. J. et al. (2023), *Methane throughout the atmosphere of the warm exoplanet WASP-80b*, Nature 623, 709-712, [doi:10.1038/s41586-023-06687-0](https://doi.org/10.1038/s41586-023-06687-0).
 
 ## Author
 
