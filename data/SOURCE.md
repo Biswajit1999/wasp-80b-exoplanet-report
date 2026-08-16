@@ -28,6 +28,28 @@ not make it free of residual stellar or instrumental systematics.
 The saved row is the input actually used by `scripts/analyze_transit.py`; the
 analysis does not query a changing live service at run time.
 
+## JWST/NIRCam transmission and emission spectra
+
+- Committed derivative: `spectra/wasp80b_nircam_source_data_rebinned.csv`
+- Primary publication: [Bell et al. (2023), Nature](https://doi.org/10.1038/s41586-023-06687-0)
+- Original workbook: [Source Data Fig. 3](https://media.springernature.com/original/springer-static/esm/art%3A10.1038%2Fs41586-023-06687-0/MediaObjects/41586_2023_6687_MOESM3_ESM.xlsx)
+- Retrieved: 2026-08-16
+- Original XLSX SHA-256: `d595847ff4bd6e4cc7878bef1e666cfea190ef780e0846135809ab5a9930a2a2`
+
+The workbook contains the published fiducial transmission and emission spectra
+and posterior contours for the full, no-CH4, and no-H2O models. To keep the
+repository compact, five adjacent data channels were inverse-variance combined;
+the model contours were linearly interpolated onto the original channel centers
+and combined with the matching weights. The final partial group is retained. All
+depths and uncertainties in the committed CSV are dimensionless. Model values in
+the workbook were converted from percent to dimensionless depth before binning.
+This deterministic compression is intended for robustness diagnostics, not for
+reproducing the paper's retrieval or its reported detection significances.
+
+`published_methane_abundances.csv` transcribes the two CH4 abundance summaries
+and reported detection significances from Bell et al. It is used only for an
+explicit consistency calculation; it is not a new abundance retrieval.
+
 
 ## Additional TESS sectors for robustness analysis
 

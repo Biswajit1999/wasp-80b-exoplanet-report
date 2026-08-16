@@ -1,0 +1,31 @@
+metric,value,unit,interpretation
+transmission_full_chi2,21.918094,chi2,one fitted additive offset
+transmission_full_offset_ppm,0.055917,ppm,data minus supplied model midpoint
+transmission_no_ch4_chi2,106.280343,chi2,one fitted additive offset
+transmission_no_ch4_offset_ppm,104.979157,ppm,data minus supplied model midpoint
+transmission_no_h2o_chi2,281.741917,chi2,one fitted additive offset
+transmission_no_h2o_offset_ppm,158.822833,ppm,data minus supplied model midpoint
+transmission_delta_chi2_no_ch4_minus_full,84.362249,chi2,shape diagnostic; not detection sigma
+transmission_jackknife_min_delta_chi2,64.598421,chi2,minimum after omitting one rebinned channel
+transmission_jackknife_max_delta_chi2,88.336672,chi2,maximum after omitting one rebinned channel
+transmission_rebin_1_delta_chi2,84.362249,chi2,additional inverse-variance binning
+transmission_rebin_2_delta_chi2,76.062583,chi2,additional inverse-variance binning
+transmission_rebin_4_delta_chi2,77.352690,chi2,additional inverse-variance binning
+emission_full_chi2,15.380971,chi2,one fitted additive offset
+emission_full_offset_ppm,-3.808370,ppm,data minus supplied model midpoint
+emission_no_ch4_chi2,256.027704,chi2,one fitted additive offset
+emission_no_ch4_offset_ppm,-159.889335,ppm,data minus supplied model midpoint
+emission_no_h2o_chi2,90.462985,chi2,one fitted additive offset
+emission_no_h2o_offset_ppm,-65.551115,ppm,data minus supplied model midpoint
+emission_delta_chi2_no_ch4_minus_full,240.646734,chi2,shape diagnostic; not detection sigma
+emission_jackknife_min_delta_chi2,202.503538,chi2,minimum after omitting one rebinned channel
+emission_jackknife_max_delta_chi2,241.310850,chi2,maximum after omitting one rebinned channel
+emission_rebin_1_delta_chi2,240.646734,chi2,additional inverse-variance binning
+emission_rebin_2_delta_chi2,233.211588,chi2,additional inverse-variance binning
+emission_rebin_4_delta_chi2,219.955240,chi2,additional inverse-variance binning
+published_log_ch4_difference_emission_minus_transmission,0.300000,dex,published posterior medians
+published_log_ch4_tension,0.339140,sigma,symmetrized independent-error comparison
+surface_gravity,13.391749,m s-2,from saved composite mass and radius
+scale_height_mu_2p3,222.701423,km,isothermal at saved equilibrium temperature
+one_scale_height,191.184954,ppm,transmission signal approximation
+methane_window_model_shape,192.564380,ppm,"peak-to-peak full minus no-CH4 model difference, 3.05-3.65 micron"
